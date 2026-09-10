@@ -1,0 +1,11 @@
+{
+    "camera_index": 0,
+    "camera_width": 1280,
+    "camera_height": 720,
+    "cursor_sensitivity": 1.0,
+    "smoothing_factor": 0.7,
+    "pinch_threshold": 0.05,
+    "scroll_sensitivity": 1.0,
+    "gesture_cooldown": 0.3,
+    "mirror_camera": true
+}
