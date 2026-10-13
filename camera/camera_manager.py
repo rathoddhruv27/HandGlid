@@ -55,3 +55,24 @@ class CameraManager:
             self.cap = None
         self.is_running = False
         logger.info("Camera released safely.")
+
+    def restart(self, camera_index=None, width=None, height=None):
+        """Restarts the camera with optional new settings."""
+        self.release()
+        if camera_index is not None:
+            self.config.set("camera_index", camera_index)
+        if width is not None:
+            self.config.set("camera_width", width)
+        if height is not None:
+            self.config.set("camera_height", height)
+        return self.start()
+
+    def get_resolution(self):
+        """Returns the actual resolution of the camera stream."""
+        if self.cap and self.is_available():
+            w = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+            h = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            if w > 0 and h > 0:
+                return w, h
+        return self.config.get("camera_width", 1280), self.config.get("camera_height", 720)
+

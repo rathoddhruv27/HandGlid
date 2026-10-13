@@ -18,7 +18,7 @@ def main():
         sys.exit(1)
 
     try:
-        app = HandGlidGUI(camera)
+        app = HandGlidGUI(camera, config=config)
         app.mainloop()
     except Exception as e:
         logger.exception(f"An unexpected error occurred: {e}")
